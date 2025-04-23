@@ -52,6 +52,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+                // Youth Empire Custom Colors
+                youth: {
+                    purple: '#9b87f5',
+                    teal: '#4ecdc4',
+                    orange: '#ff8c42',
+                    blue: '#6ec1e4',
+                    light: '#f8f9fa',
+                },
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
