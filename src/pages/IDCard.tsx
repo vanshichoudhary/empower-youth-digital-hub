@@ -23,17 +23,33 @@ const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<any>(null);
   
-  const login = (email: string, password: string) => {
-    // This is a mock login
-    setUser({
-      name: "Alex Johnson",
-      email: email,
-      id: "YE-2023-4872",
-      memberSince: "January 2023",
-      role: "Youth Leader",
-      imageUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    });
-    setIsLoggedIn(true);
+  const login = async (email: string, password: string) => {
+    // Simulate setting up a database and fetching data
+    const dummyDatabase = [
+      {
+        id: "YE-2023-4872",
+        name: "Alex Johnson",
+        email: "alex.johnson@example.com",
+        memberSince: "January 2023",
+        role: "Youth Leader",
+        imageUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      },
+      {
+        id: "YE-2023-5789",
+        name: "Sarah Williams",
+        email: "sarah.williams@example.com",
+        memberSince: "March 2023",
+        role: "Youth Member",
+        imageUrl: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      }
+    ];
+
+    const userData = dummyDatabase.find((user) => user.email === email);
+    if(userData){
+      const {name,email,id,memberSince,role,imageUrl} = userData;
+      setUser({name,email,id,memberSince,role,imageUrl});
+      setIsLoggedIn(true);
+    }
     return true;
   };
   
