@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 const testimonials = [
@@ -21,18 +21,83 @@ const testimonials = [
     role: "Student Leader",
     image: "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
   },
+  {
+    quote: "I was able to secure a grant for my community garden project thanks to the guidance from the mentors at Youth Empire. It's a dream come true!",
+    name: "David Lee",
+    role: "Community Project Leader",
+    image: "https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+  },
+  {
+    quote: "Youth Empire's workshops on digital literacy opened doors for me. Now, I help other seniors in my area get online and stay connected.",
+    name: "Emily Davis",
+    role: "Digital Literacy Advocate",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+  },
+  {
+    quote: "The network I've built through Youth Empire has been crucial to my growth as an entrepreneur. I've found collaborators, mentors, and even investors!",
+    name: "Carlos Martinez",
+    role: "Young Entrepreneur",
+    image: "https://images.unsplash.com/photo-1544005535-01335f400430?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+  },
+  {
+    quote: "Thanks to Youth Empire, I discovered my passion for coding and web design. I'm now building websites for local businesses and loving every minute of it.",
+    name: "Sophia Nguyen",
+    role: "Web Developer",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+  },
+  {
+    quote: "I came to Youth Empire with a dream of making art that matters. Now, I'm exhibiting my work at local galleries and using my talent to raise awareness about social issues.",
+    name: "Isabella Garcia",
+    role: "Artist & Social Activist",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+  },
+  {
+    quote: "The financial literacy workshops at Youth Empire changed my life. I'm now managing my finances wisely and planning for a brighter future.",
+    name: "Ethan Brown",
+    role: "Financial Literacy Advocate",
+    image: "https://images.unsplash.com/photo-1542206395-9feb3edaa68d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+  },
+  {
+    quote: "Being part of Youth Empire's leadership program has been a game-changer. I now have the skills and confidence to lead initiatives in my school and community.",
+    name: "Ava Wilson",
+    role: "Youth Leader",
+    image: "https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+  },
+  {
+    quote: "Youth Empire helped me discover my passion for environmental protection. I'm now organizing community clean-ups and educating others about sustainability.",
+    name: "Noah Anderson",
+    role: "Environmental Advocate",
+    image: "https://images.unsplash.com/photo-1532910404247-7ee9488d7292?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+  }
 ];
+
+const TRANSITION_INTERVAL = 5000; // 5 seconds
 
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
+  // Function to go to the next testimonial
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
-  
+
+  // Function to go to the previous testimonial
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
+
+  // Set up automatic transition using setInterval
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextTestimonial();
+    }, TRANSITION_INTERVAL);
+
+    // Clear interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
+
+  // Update the indicator when the current testimonial changes
+  
 
   return (
     <section className="py-20 bg-gradient-to-r from-youth-purple/5 to-youth-teal/5">
@@ -55,7 +120,7 @@ const Testimonials = () => {
             <div className="flex flex-col items-center text-center">
               <div className="w-20 h-20 rounded-full overflow-hidden mb-6">
                 <img 
-                  src={testimonials[currentTestimonial].image} 
+                  src={testimonials[currentTestimonial].image}
                   alt={testimonials[currentTestimonial].name} 
                   className="w-full h-full object-cover"
                 />
