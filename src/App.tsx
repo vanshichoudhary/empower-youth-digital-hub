@@ -11,6 +11,7 @@ import IDCardPage from "./pages/IDCard";
 import HighlightsPage from "./pages/Highlights";
 import PartnersPage from "./pages/Partners";
 import NotFound from "./pages/NotFound";
+import AIHumanGuidance from "./pages/AIHumanGuidance";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/id-card" element={<IDCardPage />} />
             <Route path="/highlights" element={<HighlightsPage />} />
             <Route path="/partners" element={<PartnersPage />} />
+            <Route path="/ai-human-guidance" element={<AIHumanGuidance />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

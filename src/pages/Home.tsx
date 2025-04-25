@@ -10,6 +10,26 @@ const Home = () => {
     <div>
       <HeroSection />
       
+      <section className="py-20 bg-youth-teal/5">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div className="flex flex-col p-8 md:p-12 text-center">
+              <h2 className="text-3xl font-bold mb-6">A.I + Human Guidance</h2>
+              <p className="mb-8 text-gray-600 leading-relaxed">
+                Navigate your career journey with our intelligent AI assistant and expert human mentors.
+              </p>
+              <Button size="lg" variant="secondary" asChild>
+                <Link to="/ai-human-guidance" className="font-medium">
+                  Explore Now
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
       <ServicesSection />
       
       <section className="py-20 bg-white">
